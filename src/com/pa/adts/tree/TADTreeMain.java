@@ -33,21 +33,7 @@ public class TADTreeMain {
         myTree.insert(posAguia, "Aguia_Real");
         myTree.insert(posCao, "Caniche");
 
-        System.out.println("TREE " + myTree);
-
-        System.out.println("Elements: ");
-
-        System.out.println();
-
-        System.out.println("E externo " + myTree.isExternal(posAguia));
-        System.out.println("");
-        System.out.println("NUMERO DE ELEMENTOS " + myTree.size());
-        System.out.println("ALTURA " + myTree.height());
-
-        int count = 1;
-        for (Position<String> pos : myTree.positions())
-            System.out.println(count++ + " - " + pos.element());
-
+        // TODO foreach
         System.out.println("ToString");
         System.out.println(myTree);
 

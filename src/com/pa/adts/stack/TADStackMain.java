@@ -16,25 +16,13 @@ public class TADStackMain {
      */
     public static void main(String[] args) {
 
-        Stack stack1 = new StackLinked();
+        Stack<Integer> stack1 = new StackArray();
+        for(int i=0; i<10;i++)
+            stack1.push(i);
 
-        try {
-            stack1.push(1);
-            stack1.push(2);
-            stack1.push(3);
-            stack1.push(4);
-            stack1.push(5);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println(stack1.isEmpty());
-        try {
-            System.out.println(stack1.pop());
-            System.out.println(stack1.pop());
-        } catch (EmptyStackException e1) {
-            System.out.println(e1.getMessage());
-        }
-        System.out.println(stack1.size());
+        // TODO foreach
+
+
 
     }
 
