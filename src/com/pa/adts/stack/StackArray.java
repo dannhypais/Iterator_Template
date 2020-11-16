@@ -69,7 +69,7 @@ public class StackArray<E> implements Stack<E> {
 
         @Override
         public boolean hasNext() {
-            return pos!=0;
+            return pos>=0;
         }
 
         @Override
