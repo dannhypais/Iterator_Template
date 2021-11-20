@@ -1,4 +1,4 @@
-# IteratorExamples_Template
+# Iterator_Template
 
 Packages base para realização dos exercícios da aula sobre o padrão Iterator
 
