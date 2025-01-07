@@ -31,8 +31,7 @@ public class StackLinked<E> implements Stack<E> {
 
     @Override
     public void push(E elem) throws FullStackException {
-         Node newNode= new Node(elem,top);
-         top=newNode;
+        top = new Node(elem,top);
          size++;
     }
 
@@ -46,7 +45,26 @@ public class StackLinked<E> implements Stack<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new IteratorStack();
+    }
+    private class IteratorStack implements Iterator<E> {
+        private Node current;
+
+        public IteratorStack() {
+            current=top;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current!=null;
+        }
+
+        @Override
+        public E next() {
+            E elem=current.elem;
+            current=current.next;
+            return elem;
+        }
     }
 
     private class Node{
