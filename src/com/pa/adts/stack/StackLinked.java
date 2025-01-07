@@ -1,6 +1,7 @@
 package com.pa.adts.stack;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class StackLinked<E> implements Stack<E> {
     private Node top;
@@ -44,6 +45,37 @@ public class StackLinked<E> implements Stack<E> {
     }
 
     @Override
+    public Iterator<E> iteratorInverse() {
+        return new IteratorInverse();
+    }
+
+    private class IteratorInverse implements Iterator<E> {
+        private Stack<Node> reverseStack;
+
+        public IteratorInverse() {
+            reverseStack = new StackArray<>();
+            Node current = top;
+            while(current != null){
+                reverseStack.push(current);
+                current=current.next;
+            }
+
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !reverseStack.isEmpty();
+        }
+
+        @Override
+        public E next() {
+            if(!hasNext()){
+                throw new NoSuchElementException();
+            }
+            return reverseStack.pop().elem;
+        }
+    }
+    @Override
     public Iterator<E> iterator() {
         return new IteratorStack();
     }
@@ -61,6 +93,9 @@ public class StackLinked<E> implements Stack<E> {
 
         @Override
         public E next() {
+            if(!hasNext()){
+                throw new NoSuchElementException();
+            }
             E elem=current.elem;
             current=current.next;
             return elem;

@@ -1,9 +1,6 @@
 package com.pa.adts.tree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author patricia.macedo
@@ -308,6 +305,47 @@ public class TreeLinked<E> implements Tree<E> {
             str += "  ";
         }
         return str + "-";
+    }
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return new IteratorTree();
+    }
+
+    private class IteratorTree implements Iterator<E> {
+        private Stack<TreeNode> stack = new Stack<>();
+
+        public IteratorTree() {
+            if (!isEmpty()) {
+                stack.push(root);
+            }
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !stack.isEmpty();
+        }
+
+        @Override
+        public E next(){
+            if(!hasNext()) {
+                throw new NoSuchElementException();
+            }
+
+            TreeNode currentNode = stack.pop();
+            List<TreeNode> children = currentNode.children;
+
+            for (int i = children.size() - 1; i >= 0; i--) {
+                stack.push(children.get(i));
+            }
+
+            return currentNode.element;
+        }
     }
 
     /**

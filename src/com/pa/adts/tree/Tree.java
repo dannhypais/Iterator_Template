@@ -7,7 +7,7 @@ package com.pa.adts.tree;
  * @param <E> Type of element stored at an tree node
  *
  */
-public interface Tree<E> {
+public interface Tree<E> extends Iterable<E> {
   /**
    * @return the number of nodes in the tree.
    */

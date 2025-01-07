@@ -55,8 +55,33 @@ public class StackArray<E> implements Stack<E> {
     }
 
     @Override
+    public Iterator<E> iteratorInverse() {
+        return new IteratorInverse();
+    }
+
+    @Override
     public Iterator<E> iterator() {
         return new IteratorStack();
+    }
+
+    private class IteratorInverse implements Iterator<E> {
+        private int pos;
+
+        public IteratorInverse() {
+            pos=0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return pos<size;
+        }
+
+        @Override
+        public E next() {
+            E elem= storage[pos];
+            pos++;
+            return elem;
+        }
     }
 
     private class IteratorStack implements Iterator<E> {

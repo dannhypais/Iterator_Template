@@ -5,6 +5,7 @@
 package com.pa.adts.stack;
 
 
+import java.util.Iterator;
 
 /**
  *
@@ -46,7 +47,8 @@ public interface Stack<E> extends Iterable<E> {
 	 */
 	public E pop()   	   	
 		throws EmptyStackException;  
-        
+
+	public Iterator<E> iteratorInverse();
    
 }
 
